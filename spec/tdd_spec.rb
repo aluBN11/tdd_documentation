@@ -2,7 +2,7 @@
 
 RSpec.describe Tdd do
 	
-	f = Food.new("Beef",50,42)
+	
 
   it "has a version number" do
     expect(Tdd::VERSION).not_to be nil
@@ -12,6 +12,20 @@ RSpec.describe Tdd do
     expect(false).to eq(false)
   end
 
+
+	
+
+end
+
+#RSpec.shared_examples "foods"  do |Food|
+#	it "Has a name" do
+#		expect(Food::name).not_to be nil
+#	end
+#end
+
+RSpec.describe Food do 
+
+	f = Food.new("Beef",50,164.0,21.1,0.0,3.1)
 
 	it "has name" do
 		expect(f.instance_variable_get(:@name) ).not_to be nil
@@ -38,7 +52,8 @@ RSpec.describe Tdd do
 	end
 
 	it "has formated out method" do
-		expect(f ).to respond_to(:formatedVal) 
+		expect(f ).to respond_to(:formatedVal)
+ 		puts f.formatedVal
 # "<Beef>\nGas emisions = 50 kgCO2eq\nTerrain use = 42\n"
 	end
 
@@ -46,31 +61,16 @@ RSpec.describe Tdd do
 		expect(f ).to respond_to(:energeticVal) 
 	end
 
-	it "calculates correctly impact of man" do
+	it "calculates correctly impact of man20-39" do
 		#have to give correct values
 		expect( f.impact('h',20,39) ).to_be 32
 	end 
 
-	it "calculates correctly impact of woman" do
+	it "calculates correctly impact of woman20-39" do
 		#have to give correct values
 		expect( f.impact('h',20,39) ).to_be 32
 	end 
-
 end
-
-#RSpec.shared_examples "foods"  do |Food|
-#	it "Has a name" do
-#		expect(Food::name).not_to be nil
-#	end
-#end
-
-#RSpec.describe Food do 
-#	it "Has name" do
-#		    expect(false).to eq(true)
-		#@burger = Food.new("burger")
-		#expect(@burger.name()).not_to be  nil
-#	end
-#end
 
 
 
