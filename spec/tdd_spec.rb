@@ -25,7 +25,7 @@ end
 
 RSpec.describe Food do 
 
-	f = Food.new("Beef",50,164.0,21.1,0.0,3.1)
+	f = Food.new("Beef",50,164.0,21.1, 0.0, 3.1)
 
 	it "has name" do
 		expect(f.instance_variable_get(:@name) ).not_to be nil
@@ -37,6 +37,18 @@ RSpec.describe Food do
 
 	it "has terrain" do
 		expect(f.instance_variable_get(:@terrain) ).not_to be nil
+	end
+
+	it "has proteins" do
+		expect(f.instance_variable_get(:@protein) ).not_to be nil
+	end
+
+	it "has carbs" do
+		expect(f.instance_variable_get(:@carbs) ).not_to be nil
+	end
+
+	it "has lipids" do
+		expect(f.instance_variable_get(:@lipids) ).not_to be nil
 	end
 
 	it "has name getter" do
@@ -62,15 +74,21 @@ RSpec.describe Food do
 	end
 
 	it "calculates correctly impact of man20-39" do
-		#have to give correct values
-		expect( f.impact('h',20,39) ).to_be 32
+		expect( f.impact_gas(3000) ).to be_within(10).of(1335)
+		expect( f.impact_terrain(3000) ).to be_within(10).of(4380)
 	end 
 
 	it "calculates correctly impact of woman20-39" do
 		#have to give correct values
-		expect( f.impact('h',20,39) ).to_be 32
+		expect( f.impact_gas(2300) ).to be_within(10).of(1024)
+		expect( f.impact_terrain(2300) ).to be_within(10).of(3350)
 	end 
 end
+
+
+
+
+
 
 
 

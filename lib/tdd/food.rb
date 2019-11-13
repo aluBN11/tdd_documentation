@@ -12,11 +12,12 @@ class Food
 		@protein = protein
 		@carbs = carbs
 		@lipids = lipids
+
 	end
 
 	def formatedVal()
-		result = "\n"
-		result +="<"
+
+		result ="<"
 		result +=@name
 		result +=">\n"
 		result +="Gas emisions = "
@@ -34,8 +35,23 @@ class Food
 	end
 
 
-	def energeticVal()
-		4*@carbs + 9*@lipids + 4*@proteins
+	def energeticVal(portions)
+		portions*(4*@carbs + 9*@lipids + 4*@protein)
+	end
+
+	
+	def impact_gas( kcal)
+		valPortion = energeticVal(1)
+		numPortions = kcal / valPortion
+
+		numPortions * @gas
+	end
+
+	def impact_terrain( kcal)
+		valPortion = energeticVal(1)
+		numPortions = kcal / valPortion
+
+		numPortions * @terrain
 	end
 
 
