@@ -2,8 +2,6 @@
 
 RSpec.describe Tdd do
 	
-	
-
   it "has a version number" do
     expect(Tdd::VERSION).not_to be nil
   end
@@ -12,9 +10,6 @@ RSpec.describe Tdd do
     expect(false).to eq(false)
   end
 
-
-	
-
 end
 
 #RSpec.shared_examples "foods"  do |Food|
@@ -22,6 +17,9 @@ end
 #		expect(Food::name).not_to be nil
 #	end
 #end
+
+
+
 
 RSpec.describe Food do 
 
@@ -86,6 +84,28 @@ RSpec.describe Food do
 end
 
 
+
+RSpec.describe List do 
+ 	
+	l = List.new()
+
+ 	it "can push" do
+		l.push(5)
+  	end
+
+	it "can pop" do
+		puts l.pop()
+	end
+
+	it "has head" do
+		expect( l.instance_variable_defined(:@head) ).not_to be false
+	end
+
+	it "has tail" do
+		expect(l.instance_variable_get(:@tail) ).to be defined
+	end
+
+end
 
 
 

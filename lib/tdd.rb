@@ -1,5 +1,6 @@
 require "tdd/version"
-require_relative "tdd/food.rb"
+require_relative "food.rb"
+require_relative "list.rb"
 
 module Tdd
   class Error < StandardError; end

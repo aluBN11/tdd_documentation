@@ -25,7 +25,7 @@ class Food
 		result +="\nTerrain used = "
 		result +=@terrain.to_s
 		result +="\nProteins = "
-		result +=@proteins.to_s
+		result +=@protein.to_s
 		result +="\nCarbs = "
 		result +=@carbs.to_s
 		result +="\nLipids = "
