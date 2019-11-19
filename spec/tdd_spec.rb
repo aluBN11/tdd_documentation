@@ -93,17 +93,28 @@ RSpec.describe List do
 		l.push(5)
   	end
 
+	it "can push back" do
+		l.push(6)
+  	end
+
 	it "can pop" do
-		puts l.pop()
+		expect(l.pop()).not_to be nil
 	end
 
-	it "has head" do
-		expect( l.instance_variable_defined(:@head) ).not_to be false
+	it "can pop back" do
+		expect(l.pop_back()).not_to be nil
 	end
 
-	it "has tail" do
-		expect(l.instance_variable_get(:@tail) ).to be defined
+	it "can pop empty" do
+		#l.pop()
+		expect(l.pop()).to be nil
 	end
+
+	it "can pop back empty" do
+		#l.pop_back()
+		expect(l.pop_back).to be nil
+	end
+
 
 end
 
