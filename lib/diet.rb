@@ -13,32 +13,36 @@ class Diet
 		@foods 	= 	foods
 	end
 
-	def calculate_food_percents_greedy_launch()
-		calculate_food_percents_greedy(
+	def calculate_food_percents_greedy(maxDeep)
+		calculate_food_percents_greedy_step(
 				@pCarbs, 0,
 				@pProts, 0,
 				@pLips,  0,
-				Float::INFINITY,
+				Float::INFINITY, maxDeep,
 				[]
 		)
 	end
 
-	def calculate_food_percents_greedy( 
+	def calculate_food_percents_greedy_step( 
 			oCarbs, cpCarbs, 
 			oProts, cpProts, 
 			oLips, 	cpLips,
-			aproxError,
+			aproxError, maxDeep,
 			result
 	)
+		
+		if( maxDeep <= 0)
+			return result
+		end
 
 		auxScore = aproxError
 		auxFood = nil
 		for food in @foods				
 			auxC = food.pCarbs 	+ cpCarbs
-			auxP = food.pProts 	+ cpProts
-			auxL = food.pLips 	+ cpLips
+			auxP = food.pProtein 	+ cpProts
+			auxL = food.pLipids 	+ cpLips
 
-			auxC -= oCarbas
+			auxC -= oCarbs
 			auxP -= oProts
 			auxL -= oLips
 
@@ -60,11 +64,11 @@ class Diet
 		end
 
 		if(auxFood != nil)
-			calculate_food_percents_greedy( 
+			calculate_food_percents_greedy_step( 
 					oCarbs + @pCarbs, 	cpCarbs + food.pCarbs, 
-					oProts + @pProts, 	cpProts + food.pProts, 
-					oLips  + @pLips, 	cpLips	+ food.pLips,
-					auxScore,
+					oProts + @pProts, 	cpProts + food.pProtein, 
+					oLips  + @pLips, 	cpLips	+ food.pLipids,
+					auxScore, maxDeep-1,
 					result << auxFood
 			)			
 		else

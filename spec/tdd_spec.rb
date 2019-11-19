@@ -119,6 +119,21 @@ RSpec.describe List do
 end
 
 
+RSpec.describe Diet do
+
+
+
+	d = Diet.new(50, 40, 20, 
+	[
+		Food.new("Beef",50,164.0,21.1, 0.0, 3.1)
+	]
+	)
+	
+	it "can calculate" do
+		d.calculate_food_percents_greedy(20)
+	end
+
+end
 
 
 
