@@ -4,6 +4,8 @@
 ## Uncomment and set this to only include directories you want to watch
 # directories %w(app lib config test spec features) \
 #  .select{|d| Dir.exist?(d) ? d : UI.warning("Directory #{d} does not exist")}
+#directories %w(lib spec) \
+#.select{|d| Dir.exist?(d) ? d : UI.warning("Directory #{d} does not exist")}
 
 ## Note: if you are using the `directories` clause above and you are not
 ## watching the project directory ('.'), then you will want to move
@@ -25,6 +27,7 @@ guard :bundler do
 
   # Assume files are symlinked from somewhere
   files.each { |file| watch(helper.real_path(file)) }
+
 end
 
 # Note: The cmd option is now required due to the increasing number of ways
@@ -40,6 +43,7 @@ guard :rspec, cmd: "bundle exec rspec" do
   require "guard/rspec/dsl"
   dsl = Guard::RSpec::Dsl.new(self)
 
+
 	
   # Feel free to open issues for suggestions and improvements
 
@@ -48,6 +52,7 @@ guard :rspec, cmd: "bundle exec rspec" do
   watch(rspec.spec_helper) { rspec.spec_dir }
   watch(rspec.spec_support) { rspec.spec_dir }
   watch(rspec.spec_files)
+
 
   # Ruby files
   ruby = dsl.ruby
@@ -80,4 +85,6 @@ guard :rspec, cmd: "bundle exec rspec" do
   watch(%r{^spec/acceptance/steps/(.+)_steps\.rb$}) do |m|
     Dir[File.join("**/#{m[1]}.feature")][0] || "spec/acceptance"
   end
+
+	
 end
