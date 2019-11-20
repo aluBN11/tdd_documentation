@@ -8,7 +8,7 @@ class Diet
 	@pProts
 	@pLips
 	@perFoods
-
+=begin
 	def initialize(pCarbs, pProts, pLipids, foods)
 		raise "Bad percents" unless ( 1.0 == (pCarbs + pProts + pLipids) )
 		@pCarbs	= 	pCarbs
@@ -21,12 +21,22 @@ class Diet
 			@perFoods.push_back( 0.0 )
 		end
 	end
-
-	def self.new_complete(pCarbs, pProts, pLipids, foods, percentsFoods)
+=end
+	def initialize(pCarbs, pProts, pLipids, foods, percentsFoods)
 		raise "Bad array length " unless 
-				(foods.length == percentsFoods.length)		
-		self.new(pCarbs, pProts, pLipids, foods)
+		raise "Bad percents" unless ( 1.0 == (pCarbs + pProts + pLipids) )
+		@pCarbs	= 	pCarbs
+		@pProts	=	pProts
+		@pLips 	=	pLipids
+		@foods 	= 	List.new(foods)
 		@perFoods = List.new(percentsFoods)
+
+		aux = 0.0
+		for per in @perFoods
+			aux += per
+		end
+
+		raise "Bad food percents" unless aux == 1.0
 	end
 
 	def setPecentsFoods(percents)
@@ -34,6 +44,25 @@ class Diet
 		@perFoods = percents
 	end
 
+
+	
+	def impact_gas(totalKcal)
+		result = 0.0
+		i = 0
+		for food in @foods
+			result += food.impact_gas(totalKcal*@perFoods[i])
+		end
+	end
+
+	def impact_terrain(totalKcal)
+		result = 0.0
+		i = 0
+		for food in @foods
+			result += food.impact_terrain(totalKcal*@perFoods[i])
+		end
+	end
+
+=begin Didnt get it working, deprecated it
 	def calculate_food_percents()
 
 		singleFoods = calculate_food_percents_greedy(10)
@@ -123,5 +152,6 @@ class Diet
 		end
 		
 	end
+=end
 
 end

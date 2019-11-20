@@ -130,4 +130,12 @@ class List
 		n.value += value
 	end
 
+	def to_array()
+		a = []
+		for obj in self
+			a << obj
+		end
+		return a
+	end
+
 end

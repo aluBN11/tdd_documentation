@@ -81,7 +81,10 @@ RSpec.describe Food do
 		expect( f.impact_gas(2300) ).to be_within(10).of(1024)
 		expect( f.impact_terrain(2300) ).to be_within(10).of(3350)
 	end 
+
+
 end
+
 
 
 
@@ -91,10 +94,12 @@ RSpec.describe List do
 
  	it "can push" do
 		l.push(5)
+		expect( l.instance_variable_get(:@head).value == 5 )
   	end
-
+ 
 	it "can push back" do
-		l.push(6)
+		l.push_back(6)
+		expect( l.instance_variable_get(:@tail).value == 6 )
   	end
 
 	it "can pop" do
@@ -123,7 +128,7 @@ RSpec.describe Diet do
 
 
 
-	d = Diet.new_complete(0.4, 0.35, 0.25, 
+	d = Diet.new(0.4, 0.35, 0.25, 
 	[
 		Food.new("Carne de vaca",		21.1, 0.0, 3.1,50,164.0),
 		#Food.new("Carne de cordero",	18.0,0.0,1.7,20.0,185.0),
@@ -147,10 +152,9 @@ RSpec.describe Diet do
 	]
 	)
 	
-	#it "can calculate" do
-		#raise
-		#d.calculate_food_percents()
-	#end
+	it "can calculate gas" do
+		d.impact_gas(3000)
+	end
 
 end
 
