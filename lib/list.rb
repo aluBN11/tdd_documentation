@@ -6,14 +6,29 @@ class List
 	@head = nil
 	@tail = nil
 
-	def initialize()
-	end
+	#def self.new
+	#end
 
+	def initialize( array )
+		
+		#if( array.length > 0) 
+		for	obj in array
+			#puts obj.name
+			push_back(obj)
+			#puts @tail
+		end
+		
+		#puts @head, @tail
+	end
+	
 	def push(value)
 	
 		n = Node.new(value,@head,nil)
 		if(@tail == nil)
 			@tail = n
+		end
+		if(@head != nil)
+			@head.prev = n
 		end
 		@head = n
 	end
@@ -23,6 +38,9 @@ class List
 		n = Node.new(value,nil,@tail)
 		if(@head == nil)
 			@head = n
+		end
+		if(@tail != nil)
+			@tail.next = n
 		end
 		@tail = n
 	end
@@ -65,6 +83,51 @@ class List
 		end
 	end
 
+  def each
+	#if(@head != nil)
+		n = @head
+		#puts n
+		raise "Bad class" unless n.class == List::Node
+		while n != nil
+ 			yield n.value
+			n = n.next
+		end
+	#end
+  end
 
+	def index(value)
 	
+		i = 0
+		n = @head
+		while n != nil
+			if n.value == value
+				return i
+			end
+			i+=1
+		end
+		return nil
+	end
+
+
+	def [](i)
+
+		n = @head		
+		while i > 0 
+			n = n.next
+			i -= 1
+		end 
+
+		return n.value
+	end
+
+		
+	def []=(i, value)
+		n = @head		
+		while i > 0 
+			n = n.next
+			i -= 1
+		end 
+		n.value += value
+	end
+
 end

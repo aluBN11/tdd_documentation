@@ -23,7 +23,7 @@ end
 
 RSpec.describe Food do 
 
-	f = Food.new("Beef",50,164.0,21.1, 0.0, 3.1)
+	f = Food.new("Beef",21.1, 0.0, 3.1,50,164.0)
 
 	it "has name" do
 		expect(f.instance_variable_get(:@name) ).not_to be nil
@@ -87,7 +87,7 @@ end
 
 RSpec.describe List do 
  	
-	l = List.new()
+	l = List.new([])
 
  	it "can push" do
 		l.push(5)
@@ -123,15 +123,34 @@ RSpec.describe Diet do
 
 
 
-	d = Diet.new(50, 40, 20, 
+	d = Diet.new_complete(0.4, 0.35, 0.25, 
 	[
-		Food.new("Beef",50,164.0,21.1, 0.0, 3.1)
+		Food.new("Carne de vaca",		21.1, 0.0, 3.1,50,164.0),
+		#Food.new("Carne de cordero",	18.0,0.0,1.7,20.0,185.0),
+		#Food.new("Camarones (piscifactorıa)", 17.6,1.5,0.6,18.0,2.0),
+		Food.new("Chocolate",			5.3,47.0,30.0,2.3,3.4)
+		#Food.new("Salmon (piscifactorıa)",19.9,0.0,13.6,6.0,3.7),
+		#Food.new("Cerdo", 				21.5,0.0,6.3,7.6,11.0),
+		#Food.new("Pollo",				20.6,0.0,5.6,5.7,7.1),
+		#Food.new("Queso",				25.0,1.3,33.0,11.0,41.0),
+		#Food.new("Cerveza",			0.5,3.6,0.0,0.24,0.22),
+		#Food.new("Leche de vaca",		3.3,4.8,3.2,3.2,8.9),
+		#Food.new("Huevos",				13.0,1.1,11.0,4.2,5.7),
+		#Food.new("Cafe",				0.1,0.0,0.0,0.4,0.3),
+		#Food.new("Tofu",				8.0,1.9,4.8,2.0,2.2),
+		#Food.new("Lentejas",			23.5,52.0,1.4,0.4,3.4),
+		#Food.new("Nuez",				20.0,21.0,54.0,0.3,7.9)
+	],
+	[
+		0.3,
+		0.7
 	]
 	)
 	
-	it "can calculate" do
-		d.calculate_food_percents_greedy(20)
-	end
+	#it "can calculate" do
+		#raise
+		#d.calculate_food_percents()
+	#end
 
 end
 

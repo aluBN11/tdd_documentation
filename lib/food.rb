@@ -8,7 +8,7 @@ class Food
 	attr_reader :carbs
 	attr_reader :lipids
 	
-	def initialize(name,gas,terrain,protein,carbs,lipids)
+	def initialize(name,protein,carbs,lipids,gas,terrain)
 		@name = name
 		@gas = gas  
 		@terrain = terrain
