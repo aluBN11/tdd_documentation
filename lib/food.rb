@@ -47,14 +47,14 @@ class Food
 		valPortion = energeticVal(1)
 		numPortions = kcal / valPortion
 
-		numPortions * @gas
+		return numPortions * @gas
 	end
 
 	def impact_terrain( kcal)
 		valPortion = energeticVal(1)
 		numPortions = kcal / valPortion
 
-		numPortions * @terrain
+		return numPortions * @terrain
 	end
 
 	def pCarbs()

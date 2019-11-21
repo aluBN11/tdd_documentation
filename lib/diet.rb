@@ -35,7 +35,11 @@ class Diet
 		for per in @perFoods
 			aux += per
 		end
-
+		
+		#puts aux
+		if ( -0.0001 < 1.0-aux && 1.0-aux < 0.0001)#correct error
+			aux = 1
+		end
 		raise "Bad food percents" unless aux == 1.0
 	end
 
@@ -52,6 +56,7 @@ class Diet
 		for food in @foods
 			result += food.impact_gas(totalKcal*@perFoods[i])
 		end
+		return result
 	end
 
 	def impact_terrain(totalKcal)
@@ -60,6 +65,7 @@ class Diet
 		for food in @foods
 			result += food.impact_terrain(totalKcal*@perFoods[i])
 		end
+		return result
 	end
 
 =begin Didnt get it working, deprecated it

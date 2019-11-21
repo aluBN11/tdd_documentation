@@ -81,8 +81,6 @@ RSpec.describe Food do
 		expect( f.impact_gas(2300) ).to be_within(10).of(1024)
 		expect( f.impact_terrain(2300) ).to be_within(10).of(3350)
 	end 
-
-
 end
 
 
