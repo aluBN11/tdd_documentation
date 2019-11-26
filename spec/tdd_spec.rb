@@ -81,6 +81,23 @@ RSpec.describe Food do
 		expect( f.impact_gas(2300) ).to be_within(10).of(1024)
 		expect( f.impact_terrain(2300) ).to be_within(10).of(3350)
 	end 
+
+	f2 = Food.new("Chocolate",5.3,47.0,30.0,2.3,3.4)
+
+	it "compares <" do
+		#puts f.energeticVal(1).to_s
+		#puts f2.energeticVal(1).to_s
+		expect(f<f2).to be true
+	end
+	it "compares <=" do
+		expect(f<=f2).to be true
+	end
+	it "compares >" do
+		expect(f>f2).to be false
+	end
+	it "compares >=" do
+		expect(f>=f2).to be false
+	end
 end
 
 
@@ -108,6 +125,7 @@ RSpec.describe List do
 		expect(l.pop_back()).not_to be nil
 	end
 
+
 	it "can pop empty" do
 		#l.pop()
 		expect(l.pop()).to be nil
@@ -118,6 +136,30 @@ RSpec.describe List do
 		expect(l.pop_back).to be nil
 	end
 
+	it "can collect" do
+		l.push(1)
+		l.push(3)
+		l.push(5)
+		l.push(-1)
+		l.push(2)
+		l.push(3)
+		#print l.collect{ |i| i+i }
+		aux = l.collect{ |i| i+i }
+		expect( aux == [6, 4, -2, 10, 6, 2] ).to be true
+	end
+	it "can select" do
+		aux = l.select{ |num| num.even? }
+		expect(aux == [2] ).to be true 
+	end
+	it "can max" do
+		expect( l.max ).to be 5
+	end
+	it "can min" do
+		expect( l.min ).to be -1
+	end
+	it "can sort" do
+		expect( l.sort == [-1, 1, 2, 3, 3, 5] ).to be true
+	end
 
 end
 
@@ -125,8 +167,69 @@ end
 RSpec.describe Diet do
 
 
+p = Plate.new("test",0.4, 0.35, 0.25, 
+	[
+		Food.new("Carne de vaca",		21.1, 0.0, 3.1,50,164.0),
+		Food.new("Chocolate",			5.3,47.0,30.0,2.3,3.4)
+	],
+	[
+		0.3,
+		0.7
+	]
+	)
 
-	d = Diet.new(0.4, 0.35, 0.25, 
+	m = Menu.new("test",0.4,0.35,0.25,
+	[
+		p
+	],
+	[
+		1
+	]
+	)
+
+	d = Diet.new("test",0.4, 0.35, 0.25, 
+	[
+		m
+	],
+	[
+		1
+	]
+	)
+	
+	it "can calculate gas" do
+		d.impact_gas(3000)
+	end
+
+end
+
+RSpec.describe Menu do
+
+	
+	p = Plate.new("test",0.4, 0.35, 0.25, 
+	[
+		Food.new("Carne de vaca",		21.1, 0.0, 3.1,50,164.0),
+		Food.new("Chocolate",			5.3,47.0,30.0,2.3,3.4)
+	],
+	[
+		0.3,
+		0.7
+	]
+	)
+
+	m = Menu.new("test",0.4,0.35,0.25,
+	[
+		p
+	],
+	[
+		1
+	]
+	)
+
+end
+
+RSpec.describe Plate do
+
+	p = Plate.new("test",0.4, 0.35, 0.25, 
 	[
 		Food.new("Carne de vaca",		21.1, 0.0, 3.1,50,164.0),
 		#Food.new("Carne de cordero",	18.0,0.0,1.7,20.0,185.0),
@@ -151,9 +254,8 @@ RSpec.describe Diet do
 	)
 	
 	it "can calculate gas" do
-		d.impact_gas(3000)
+		p.impact_gas(3000)
 	end
-
 end
 
 

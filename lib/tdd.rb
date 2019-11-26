@@ -2,12 +2,14 @@ require "tdd/version"
 require "food.rb"
 require "list.rb"
 require "diet.rb"
+require "plate.rb"
+require "menu.rb"
 
 module Tdd
   class Error < StandardError; end
   # Your code goes here...
 
-	esp = Diet.new(
+	esp = Plate.new("esp",
 			0.4, 0.4, 0.2,
 			[
 				Food.new("Carne de vaca",		21.1, 0.0, 3.1,50,164.0),
@@ -35,7 +37,7 @@ module Tdd
 			]
 	)	
 
-	vasca = Diet.new(
+	vasca = Plate.new("vasca",
 			0.6, 0.25, 0.15,
 			[
 				Food.new("Carne de vaca",		21.1, 0.0, 3.1,50,164.0),
@@ -63,7 +65,7 @@ module Tdd
 			]
 	)	
 
-	vegetariana = Diet.new(
+	vegetariana = Plate.new("vegetariana",
 			0.4, 0.4, 0.2,
 			[
 				
@@ -88,7 +90,7 @@ module Tdd
 	)	
 
 
-	vegeitaliana = Diet.new(
+	vegeitaliana = Plate.new("vegeitaliana",
 			0.4, 0.4, 0.2,
 			[
 
@@ -109,7 +111,7 @@ module Tdd
 			]
 	)	
 
-	locura = Diet.new(
+	locura = Plate.new("locura por la carne",
 			0.4, 0.4, 0.2,
 			[
 				Food.new("Carne de vaca",		21.1, 0.0, 3.1,50,164.0),

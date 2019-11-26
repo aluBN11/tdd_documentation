@@ -1,6 +1,9 @@
 
 
 class List
+
+	include Enumerable
+
 	Node = Struct.new(:value, :next, :prev)
 
 	@head = nil

@@ -1,6 +1,8 @@
 
 class Food
 
+	include Comparable
+
 	attr_reader :name
 	attr_reader :gas
 	attr_reader :terrain
@@ -68,4 +70,10 @@ class Food
 	def pLipids()
 		@lipids / (@carbs + @protein + @lipids)
 	end
+
+
+	def <=>(other)
+		self.energeticVal(1)<=>other.energeticVal(1)
+	end
+	
 end

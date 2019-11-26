@@ -1,38 +1,18 @@
 
+module NutritionImpac
 
 
-class Diet
-
-	@foods
-	@pCarbs
-	@pProts
-	@pLips
-	@perFoods
-=begin
-	def initialize(pCarbs, pProts, pLipids, foods)
-		raise "Bad percents" unless ( 1.0 == (pCarbs + pProts + pLipids) )
-		@pCarbs	= 	pCarbs
-		@pProts	=	pProts
-		@pLips 	=	pLipids
-		@foods 	= 	List.new(foods)
-
-		@perFoods = List.new([])
-		for food in @foods
-			@perFoods.push_back( 0.0 )
-		end
-	end
-=end
-	def initialize(pCarbs, pProts, pLipids, foods, percentsFoods)
+	def initNutritionImpac(pCarbs, pProts, pLipids, data, percentsData)
 		raise "Bad array length " unless 
 		raise "Bad percents" unless ( 1.0 == (pCarbs + pProts + pLipids) )
 		@pCarbs	= 	pCarbs
 		@pProts	=	pProts
 		@pLips 	=	pLipids
-		@foods 	= 	List.new(foods)
-		@perFoods = List.new(percentsFoods)
+		@data 	= 	List.new(data)
+		@perData = List.new(percentsData)
 
 		aux = 0.0
-		for per in @perFoods
+		for per in @perData
 			aux += per
 		end
 		
@@ -40,12 +20,12 @@ class Diet
 		if ( -0.0001 < 1.0-aux && 1.0-aux < 0.0001)#correct error
 			aux = 1
 		end
-		raise "Bad food percents" unless aux == 1.0
+		raise "Bad data percents" unless aux == 1.0
 	end
 
-	def setPecentsFoods(percents)
-		raise "Bad array length " unless (percents.length == @foods.length)
-		@perFoods = percents
+	def setPecentsData(percents)
+		raise "Bad array length " unless (percents.length == @data.length)
+		@perData = percents
 	end
 
 
@@ -53,8 +33,8 @@ class Diet
 	def impact_gas(totalKcal)
 		result = 0.0
 		i = 0
-		for food in @foods
-			result += food.impact_gas(totalKcal*@perFoods[i])
+		for datum in @data
+			result += datum.impact_gas(totalKcal*@perData[i])
 		end
 		return result
 	end
@@ -62,102 +42,28 @@ class Diet
 	def impact_terrain(totalKcal)
 		result = 0.0
 		i = 0
-		for food in @foods
-			result += food.impact_terrain(totalKcal*@perFoods[i])
+		for datum in @data
+			result += datum.impact_terrain(totalKcal*@perData[i])
 		end
 		return result
 	end
+end
 
-=begin Didnt get it working, deprecated it
-	def calculate_food_percents()
+class Diet
 
-		singleFoods = calculate_food_percents_greedy(10)
-		
-		for food in singleFoods
-			i = @foods.index(food)
-			@perFoods[i]+= 1.0
+	include NutritionImpac
+
+	attr_reader :name
+
+	def initialize(name, pCarbs, pProts, pLipids, menus, percentsMenus)
+
+		for menu in menus
+			raise "Bad class error" unless menu.class == Menu
 		end
-		
-		for per in @perFoods
-			per /= singleFoods.length
-			puts per
-		end
+		@name=name
+		initNutritionImpac(pCarbs, pProts, pLipids, menus, percentsMenus)
 
 	end
 
-	def calculate_food_percents_greedy(maxDeep)
-		calculate_food_percents_greedy_step(
-				@pCarbs, 0.0,
-				@pProts, 0.0,
-				@pLips,  0.0,
-				Float::INFINITY, maxDeep,
-				[]
-		)
-	end
-
-
-	def calculate_food_percents_greedy_step( 
-			oCarbs, cpCarbs, 
-			oProts, cpProts, 
-			oLips, 	cpLips,
-			aproxError, maxDeep,
-			result
-	)
-		puts "",aproxError
-		puts oCarbs.to_s << " " << oProts.to_s << " " << oLips.to_s
-
-		if( maxDeep <= 0)
-			return result
-		end
-
-		auxScore = aproxError
-		auxFood = nil
-		for food in @foods				
-			auxC = food.pCarbs 		+ cpCarbs
-			auxP = food.pProtein 	+ cpProts
-			auxL = food.pLipids 	+ cpLips
-			
-			print food.name, "\n",
-			auxC," ",auxP," ",auxL,"\n"
-			auxC -= oCarbs
-			auxP -= oProts
-			auxL -= oLips
-			#puts auxC
-			if(auxC<0.0)
-				auxC = -auxC;
-			end
-			if(auxP<0.0)
-				auxP = -auxP;
-			end
-			if(auxL<0.0)
-				auxL = -auxL;
-			end
-			#puts auxC
-			#error total
-			auxC = auxC+auxP+auxL
-			print auxC ," ", auxScore, "\n"
-			if(auxC<auxScore)
-				puts "<"
-				auxFood = food
-				auxScore = auxC			
-			end	
-		end
-
-
-		if(auxFood != nil)
-			puts ">>",auxFood.name
-			return calculate_food_percents_greedy_step( 
-					oCarbs + @pCarbs, 	cpCarbs + food.pCarbs, 
-					oProts + @pProts, 	cpProts + food.pProtein, 
-					oLips  + @pLips, 	cpLips	+ food.pLipids,
-					auxScore, maxDeep-1,
-					result << auxFood
-			)			
-		else
-			return result
-		end
-		
-	end
-=end
 
 end
