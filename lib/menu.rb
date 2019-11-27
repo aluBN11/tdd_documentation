@@ -19,6 +19,14 @@ class Menu
 		return @data
 	end	
 
+	def foods
+		f=[]
+		for plate in @data
+			f << plate.foods
+		end 
+		return f
+	end
+
 	def to_s()
 		result = ""
 		result+= "<<<"+@name+">>>\n"

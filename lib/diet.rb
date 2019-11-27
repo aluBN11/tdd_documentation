@@ -118,6 +118,14 @@ class Diet
 		return @data
 	end
 
+	def foods
+		f=[]
+		for menu in @data
+			f << menu.foods
+		end 
+		return f
+	end
+
 end
 
 

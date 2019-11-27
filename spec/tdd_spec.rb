@@ -523,6 +523,7 @@ RSpec.describe Plate do
 	]
 	)
 
+
 	it "has name" do
 		expect( p.name ).not_to be nil
 	end	
@@ -587,6 +588,7 @@ RSpec.describe "test sorting diets" do
 
 	it "can collect" do
 		for d in @diets
+			d.foods.collect{ |f| f.to_s }
 			for m in d.menus
 				for p in m.plates
 					p.foods.collect{ |f| f.to_s }
