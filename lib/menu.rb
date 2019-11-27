@@ -15,6 +15,10 @@ class Menu
 		initNutritionImpac(plates, percentsPlates)
 	end
 
+	def plates
+		return @data
+	end	
+
 	def to_s()
 		result = ""
 		result+= "<<<"+@name+">>>\n"

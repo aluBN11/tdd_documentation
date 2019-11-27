@@ -34,7 +34,11 @@ module NutritionImpac
 			@pLipids	+= @data[i].pLipids *	@perData[i]
 			i+=1
 		end		
-		raise "Bad nutrients percents" unless ( 1.0 == (@pCarbs + @pProtein + @pLipids) )
+		aux = @pCarbs + @pProtein + @pLipids
+		if ( -0.0001 < 1.0-aux && 1.0-aux < 0.0001)#correct error
+			aux = 1
+		end
+		raise "Bad nutrients percents" unless ( 1.0 == aux )
 	end
 
 	def setPecentsData(percents)
@@ -108,6 +112,10 @@ class Diet
 		result = ""
 		result+= "<<<<"+@name+">>>>\n"
 		result+= formatedVal
+	end
+
+	def menus
+		return @data
 	end
 
 end

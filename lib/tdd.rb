@@ -4,10 +4,13 @@ require "list.rb"
 require "diet.rb"
 require "plate.rb"
 require "menu.rb"
+require "dietGenerator.rb"
 
 module Tdd
   class Error < StandardError; end
   # Your code goes here...
+
+	srand()
 
 	esp = Plate.new("esp",
 			#0.4, 0.4, 0.2,
