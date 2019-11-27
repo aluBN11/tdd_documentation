@@ -141,4 +141,8 @@ class List
 		return a
 	end
 
+	def size()
+		self.count()
+	end
+
 end

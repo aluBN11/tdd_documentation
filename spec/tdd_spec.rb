@@ -167,7 +167,7 @@ end
 RSpec.describe Diet do
 
 
-p = Plate.new("test",0.4, 0.35, 0.25, 
+p = Plate.new("test",#0.4, 0.35, 0.25, 
 	[
 		Food.new("Carne de vaca",		21.1, 0.0, 3.1,50,164.0),
 		Food.new("Chocolate",			5.3,47.0,30.0,2.3,3.4)
@@ -178,7 +178,7 @@ p = Plate.new("test",0.4, 0.35, 0.25,
 	]
 	)
 
-	m = Menu.new("test",0.4,0.35,0.25,
+	m = Menu.new("test",#0.4,0.35,0.25,
 	[
 		p
 	],
@@ -187,7 +187,7 @@ p = Plate.new("test",0.4, 0.35, 0.25,
 	]
 	)
 
-	d = Diet.new("test",0.4, 0.35, 0.25, 
+	d = Diet.new("test",#0.4, 0.35, 0.25, 
 	[
 		m
 	],
@@ -205,7 +205,7 @@ end
 RSpec.describe Menu do
 
 	
-	p = Plate.new("test",0.4, 0.35, 0.25, 
+	p = Plate.new("test",#0.4, 0.35, 0.25, 
 	[
 		Food.new("Carne de vaca",		21.1, 0.0, 3.1,50,164.0),
 		Food.new("Chocolate",			5.3,47.0,30.0,2.3,3.4)
@@ -216,7 +216,7 @@ RSpec.describe Menu do
 	]
 	)
 
-	m = Menu.new("test",0.4,0.35,0.25,
+	m = Menu.new("test",#0.4,0.35,0.25,
 	[
 		p
 	],
@@ -225,11 +225,44 @@ RSpec.describe Menu do
 	]
 	)
 
+	it "has name" do
+		expect( m.name ).not_to be nil
+	end	
+
+	it "has foods" do
+		expect(m.instance_variable_get(:@data)).not_to be nil
+		expect(m.instance_variable_get(:@data)[0].class).to be Plate
+	end
+
+	it "returns food in grams" do
+		expect(m.data_grams(5)).not_to be nil
+	end
+
+	it "has p proteins" do
+		expect(m.pProtein).not_to be nil
+	end
+
+	it "has p lipids" do
+		expect(m.pLipids).not_to be nil
+	end
+
+	it "has p carbs" do
+		expect(m.pCarbs).not_to be nil
+	end
+
+	it "can return formated" do
+		puts(m.to_s)
+	end
+
+	it "can calculate gas" do
+		m.impact_gas(3000)
+	end
+
 end
 
 RSpec.describe Plate do
 
-	p = Plate.new("test",0.4, 0.35, 0.25, 
+	p = Plate.new("test",#0.4, 0.35, 0.25, 
 	[
 		Food.new("Carne de vaca",		21.1, 0.0, 3.1,50,164.0),
 		#Food.new("Carne de cordero",	18.0,0.0,1.7,20.0,185.0),
@@ -252,9 +285,46 @@ RSpec.describe Plate do
 		0.7
 	]
 	)
-	
+
+	it "has name" do
+		expect( p.name ).not_to be nil
+	end	
+
+	it "has foods" do
+		expect(p.instance_variable_get(:@data)).not_to be nil
+		expect(p.instance_variable_get(:@data)[0].class).to be Food
+	end
+
+	it "returns food in grams" do
+		expect(p.data_grams(5)).not_to be nil
+	end
+
+	it "has p proteins" do
+		expect(p.pProtein).not_to be nil
+	end
+
+	it "has p lipids" do
+		expect(p.pLipids).not_to be nil
+	end
+
+	it "has p carbs" do
+		expect(p.pCarbs).not_to be nil
+	end
+
+	it "can return formated" do
+		puts(p.to_s)
+	end
+
 	it "can calculate gas" do
 		p.impact_gas(3000)
+	end
+
+	it "can calculate terrain" do
+		p.impact_terrain(3000)
+	end
+
+	it "can calculate energetic value" do 
+		p.energeticVal(2000)
 	end
 end
 

@@ -10,7 +10,7 @@ module Tdd
   # Your code goes here...
 
 	esp = Plate.new("esp",
-			0.4, 0.4, 0.2,
+			#0.4, 0.4, 0.2,
 			[
 				Food.new("Carne de vaca",		21.1, 0.0, 3.1,50,164.0),
 				Food.new("Carne de cordero",	18.0,0.0,1.7,20.0,185.0),
@@ -38,7 +38,7 @@ module Tdd
 	)	
 
 	vasca = Plate.new("vasca",
-			0.6, 0.25, 0.15,
+			#0.6, 0.25, 0.15,
 			[
 				Food.new("Carne de vaca",		21.1, 0.0, 3.1,50,164.0),
 				Food.new("Carne de cordero",	18.0,0.0,1.7,20.0,185.0),
@@ -66,7 +66,7 @@ module Tdd
 	)	
 
 	vegetariana = Plate.new("vegetariana",
-			0.4, 0.4, 0.2,
+			#0.4, 0.4, 0.2,
 			[
 				
 				Food.new("Chocolate",			5.3,47.0,30.0,2.3,3.4),
@@ -91,7 +91,7 @@ module Tdd
 
 
 	vegeitaliana = Plate.new("vegeitaliana",
-			0.4, 0.4, 0.2,
+			#0.4, 0.4, 0.2,
 			[
 
 				Food.new("Chocolate",			5.3,47.0,30.0,2.3,3.4),
@@ -112,7 +112,7 @@ module Tdd
 	)	
 
 	locura = Plate.new("locura por la carne",
-			0.4, 0.4, 0.2,
+			#0.4, 0.4, 0.2,
 			[
 				Food.new("Carne de vaca",		21.1, 0.0, 3.1,50,164.0),
 				Food.new("Carne de cordero",	18.0,0.0,1.7,20.0,185.0),

@@ -17,7 +17,7 @@ class Food
 		@protein = protein
 		@carbs 	= carbs
 		@lipids = lipids
-
+		
 	end
 
 	def formatedVal()
@@ -35,8 +35,13 @@ class Food
 		result +=@carbs.to_s
 		result +="\nLipids = "
 		result +=@lipids.to_s
+		result +="\n"
 	
 		result
+	end
+
+	def to_s
+		return formatedVal
 	end
 
 
