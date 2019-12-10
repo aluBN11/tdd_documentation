@@ -42,6 +42,11 @@ RSpec.describe "Plate tests" do
 					0.2, 0, 0, 0.4, 0,
 					0, 0, 0, 0, 0,
 					0, 0, 0.2, 0, 0.2				
+			],
+			[
+					0.2, 0, 0, 0.4, 0,
+					0, 0, 0, 0, 0,
+					0, 0, 0.2, 0, 0.2				
 			]
 	)	
 
@@ -70,7 +75,12 @@ RSpec.describe "Plate tests" do
 				0.125, 0, 0, 0, 0,
 				0.125, 0, 0, 0, 0.375,
 				0, 0.125, 0.25, 0, 0			
-			]
+			],
+			[
+				0.125, 0, 0, 0, 0,
+				0.125, 0, 0, 0, 0.375,
+				0, 0.125, 0.25, 0, 0			
+			]	
 	)	
 
 	vegetariana = Plate.new("vegetariana",
@@ -89,6 +99,11 @@ RSpec.describe "Plate tests" do
 				Food.new("Tofu",				8.0,1.9,4.8,2.0,2.2),
 				Food.new("Lentejas",			23.5,52.0,1.4,0.4,3.4),
 				Food.new("Nuez",				20.0,21.0,54.0,0.3,7.9)
+			],
+			[
+				0.1, 
+				0, 0, 0.34,
+				0.06, 0.4, 0.1, 0, 0				
 			],
 			[
 				0.1, 
@@ -116,6 +131,11 @@ RSpec.describe "Plate tests" do
 				0.1,
 			 	0.4, 
 				0.2, 0, 0.2, 0.1				
+			],
+			[
+				13,
+				4,
+				2,3,3,4
 			]
 	)	
 
@@ -144,7 +164,12 @@ RSpec.describe "Plate tests" do
 				0.2, 0.1, 0, 0.2, 0,
 				0.1, 0.1, 0, 0, 0,
 				0, 0, 0.2, 0, 0.1				
-			]
+			],
+			[
+				0.2, 0.1, 0, 0.2, 0,
+				0.1, 0.1, 0, 0, 0,
+				0, 0, 0.2, 0, 0.1				
+			],
 	)	
 
 	it "has plates" do
@@ -357,6 +382,10 @@ p = Plate.new("test",#0.4, 0.35, 0.25,
 	[
 		0.3,
 		0.7
+	],
+	[
+		3,
+		7
 	]
 	)
 
@@ -423,6 +452,7 @@ p = Plate.new("test",#0.4, 0.35, 0.25,
 	it "can give menus" do
 		expect(d.menus).not_to be nil
 	end
+
 end
 
 
@@ -438,6 +468,10 @@ RSpec.describe Menu do
 	[
 		0.3,
 		0.7
+	],
+	[
+		3,
+		7
 	]
 	)
 
@@ -520,6 +554,10 @@ RSpec.describe Plate do
 	[
 		0.3,
 		0.7
+	],
+	[
+		3,
+		7
 	]
 	)
 
@@ -567,6 +605,10 @@ RSpec.describe Plate do
 
 	it "can give foods" do
 		expect( p.foods ).not_to be nil
+	end
+
+	it "can return nutritional index" do
+		expect( p.nutritional_index() ).not_to be nil
 	end
 end
 
@@ -637,5 +679,33 @@ RSpec.describe "test sorting diets" do
 	
 end
 
+RSpec.describe "Test nutritional index" do 
 
+	include DietGenerator
+
+	before(:all){
+		srand()
+		@m = newRandMenu(0.2,0.4,0.4)
+	}
+
+	it "can get max index plate" do
+		aux = nil#@m.plates[0]
+		auxVal = 0
+		for p in @m.plates
+			if p.nutritional_index() > auxVal
+				auxVal = p.nutritional_index()
+				aux = p
+			end
+		end
+		
+
+		aux2 = @m.plates.max_by {|plate| plate.nutritional_index() }
+
+		expect( aux ).to eq aux2
+	end
+
+	it "can increment in relation to max index plate"
+
+	end
+end 
 

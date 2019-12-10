@@ -6,8 +6,9 @@ module NutritionImpac
 	attr_reader :pLipids
 
 	include Comparable
-	def initNutritionImpac(data, percentsData)
+	def initNutritionImpac(data, percentsData, standartRation = 300)
 		
+		@standartRation = standartRation
 		@pCarbs		= 	0
 		@pProtein	=	0
 		@pLipids 	=	0
@@ -38,7 +39,7 @@ module NutritionImpac
 		if ( -0.0001 < 1.0-aux && 1.0-aux < 0.0001)#correct error
 			aux = 1
 		end
-		raise "Bad nutrients percents" unless ( 1.0 == aux )
+		raise "Bad nutrients percents" unless ( 1.0 >= aux )
 	end
 
 	def setPecentsData(percents)
@@ -81,11 +82,32 @@ module NutritionImpac
 	end
 
 	def energeticVal(grams)
-		grams*(4*@pCarbs + 9*@pLipids + 4*@pProtein)
+		grams*(4.0*@pCarbs + 9.0*@pLipids + 4.0*@pProtein)
+	end
+
+	def nutritional_index()
+			ener = energeticVal(@standartRation)
+			iEner = 1
+			if(ener > 670)
+				iEner = 2
+				if(ener > 830)
+					iEner = 3
+				end			
+			end
+
+			gas = impact_gas(@standartRation)
+			iGas = 1
+			if (gas >800 ) 
+				iGas = 2
+				if( gas > 1200 ) 
+					iGas = 3
+				end
+			end
+			return (iEner + iGas)/2				
 	end
 	
 	def <=>(other)
-		self.energeticVal(1)<=>other.energeticVal(1)
+		self.energeticVal(1.0)<=>other.energeticVal(1.0)
 	end
 end
 

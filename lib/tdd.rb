@@ -11,7 +11,7 @@ module Tdd
   # Your code goes here...
 
 	srand()
-
+=begin
 	esp = Plate.new("esp",
 			#0.4, 0.4, 0.2,
 			[
@@ -166,5 +166,5 @@ module Tdd
 	puts("Emision diaria gas: ",locura.impact_gas(4000).to_s() )
 	puts("Emision anual gas: ", locura.impact_gas(1460000).to_s )
 	puts("Consumo terreno por persona: ",locura.impact_terrain(4000).to_s() )
-
+=end
 end
