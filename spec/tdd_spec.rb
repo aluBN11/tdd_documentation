@@ -704,7 +704,8 @@ RSpec.describe "Test nutritional index" do
 		expect( aux ).to eq aux2
 	end
 
-	it "can increment in relation to max index plate"
+	it "can increment in relation to max index plate" do
+		aux = @m.plates.max_by {|plate| plate.nutritional_index() }
 
 	end
 end 

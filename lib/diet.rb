@@ -1,6 +1,11 @@
 
+# Handles the shared logic for menu, pate, and diet
+	# @param data [List] with the food, menu or plate
+	# @param percentData [List] with percent of data over total
+	# @param standartRation [Int] grams of the standart ration
 module NutritionImpac
 
+	
 	attr_reader :pCarbs
 	attr_reader :pProtein
 	attr_reader :pLipids
