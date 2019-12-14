@@ -117,6 +117,10 @@ module NutritionImpac
 end
 
 
+#Handles the diet logic
+# @param name [String] name of the diet
+# @param menus [List] with the menus
+# @param percentMenus [List] with the percent of each menu that makes the diet
 class Diet
 
 	include NutritionImpac
