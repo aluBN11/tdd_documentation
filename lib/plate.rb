@@ -4,17 +4,19 @@ class Plate
 	include NutritionImpac
 
 	attr_reader :name
+	attr_accessor :price
 
 	def initialize(name, #pCarbs, pProts, pLipids, 
-			foods, percentsFoods, prices)
+			foods, percentsFoods, price)
 		@name=name
-		@prices=prices
+		@price=price
 
 		for food in foods
 			raise "Bad class error" unless food.class == Food
 		end
 		initNutritionImpac( foods, percentsFoods)
-		raise "Bad list length" unless @data.size == @prices.size
+		raise "Bad class error" unless price.class == Float
+		#raise "Bad list length" unless @data.size == @price.size
 	end
 
 	def foods
@@ -23,7 +25,7 @@ class Plate
 
 	def to_s()
 		result = ""
-		result+= "<<"+@name+">>\n"
+		result+= "<<"+@name+">>"+@price.to_s+"€\n"
 		result+= formatedVal
 	end
 end

@@ -76,7 +76,7 @@ module DietGenerator
 
 		foods =    []
 		percents = []
-		prices =   []
+		prices =   0
 		auxPer = 1.0
 		auxPrice = 20
 		i = 1 + (rand()*3)
@@ -96,13 +96,13 @@ module DietGenerator
 
 			foods 	<< newRandFood(pcarbs,pprots,plips)
 			percents << thisauxPer			
-			prices << thisauxprice			
+			prices += thisauxprice * thisauxPer	
 
 			i -= 1
 		end
 		foods 	<< newRandFood(pcarbs,pprots,plips)
 		percents << auxPer
-		prices << auxPrice * rand()
+		prices += auxPrice * rand() * auxPer
 
 
 		p = Plate.new(

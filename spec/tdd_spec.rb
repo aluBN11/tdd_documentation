@@ -43,11 +43,7 @@ RSpec.describe "Plate tests" do
 					0, 0, 0, 0, 0,
 					0, 0, 0.2, 0, 0.2				
 			],
-			[
-					0.2, 0, 0, 0.4, 0,
-					0, 0, 0, 0, 0,
-					0, 0, 0.2, 0, 0.2				
-			]
+			3.0
 	)	
 
 	vasca = Plate.new("vasca",
@@ -76,11 +72,7 @@ RSpec.describe "Plate tests" do
 				0.125, 0, 0, 0, 0.375,
 				0, 0.125, 0.25, 0, 0			
 			],
-			[
-				0.125, 0, 0, 0, 0,
-				0.125, 0, 0, 0, 0.375,
-				0, 0.125, 0.25, 0, 0			
-			]	
+			5.0
 	)	
 
 	vegetariana = Plate.new("vegetariana",
@@ -105,11 +97,7 @@ RSpec.describe "Plate tests" do
 				0, 0, 0.34,
 				0.06, 0.4, 0.1, 0, 0				
 			],
-			[
-				0.1, 
-				0, 0, 0.34,
-				0.06, 0.4, 0.1, 0, 0				
-			]
+			4.0
 	)	
 
 
@@ -132,11 +120,7 @@ RSpec.describe "Plate tests" do
 			 	0.4, 
 				0.2, 0, 0.2, 0.1				
 			],
-			[
-				13,
-				4,
-				2,3,3,4
-			]
+			10.0
 	)	
 
 	locura = Plate.new("locura por la carne",
@@ -165,11 +149,7 @@ RSpec.describe "Plate tests" do
 				0.1, 0.1, 0, 0, 0,
 				0, 0, 0.2, 0, 0.1				
 			],
-			[
-				0.2, 0.1, 0, 0.2, 0,
-				0.1, 0.1, 0, 0, 0,
-				0, 0, 0.2, 0, 0.1				
-			],
+			15.0
 	)	
 
 	it "has plates" do
@@ -383,10 +363,7 @@ p = Plate.new("test",#0.4, 0.35, 0.25,
 		0.3,
 		0.7
 	],
-	[
-		3,
-		7
-	]
+	7.0
 	)
 
 	m = Menu.new("test",#0.4,0.35,0.25,
@@ -469,10 +446,7 @@ RSpec.describe Menu do
 		0.3,
 		0.7
 	],
-	[
-		3,
-		7
-	]
+	10.0
 	)
 
 	m = Menu.new("test",#0.4,0.35,0.25,
@@ -555,10 +529,7 @@ RSpec.describe Plate do
 		0.3,
 		0.7
 	],
-	[
-		3,
-		7
-	]
+	13.0
 	)
 
 
@@ -707,6 +678,11 @@ RSpec.describe "Test nutritional index" do
 	it "can increment in relation to max index plate" do
 		aux = @m.plates.max_by {|plate| plate.nutritional_index() }
 
+		aux = aux.nutritional_index()
+
+		p = @m.plates.collect{ |plate|
+			plate.price += plate.price * plate.nutritional_index()/aux
+		}
 	end
 end 
 
