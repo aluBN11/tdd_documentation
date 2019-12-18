@@ -1,5 +1,5 @@
 
-
+#Implementation of doubly linked, double headed array
 class List
 
 	include Enumerable
@@ -144,5 +144,4 @@ class List
 	def size()
 		self.count()
 	end
-
 end

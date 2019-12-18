@@ -549,7 +549,7 @@
 </span>
 	<span class='id identifier rubyid_foods'>foods</span> <span class='op'>=</span>    <span class='lbracket'>[</span><span class='rbracket'>]</span>
 	<span class='id identifier rubyid_percents'>percents</span> <span class='op'>=</span> <span class='lbracket'>[</span><span class='rbracket'>]</span>
-	<span class='id identifier rubyid_prices'>prices</span> <span class='op'>=</span>   <span class='lbracket'>[</span><span class='rbracket'>]</span>
+	<span class='id identifier rubyid_prices'>prices</span> <span class='op'>=</span>   <span class='int'>0</span>
 	<span class='id identifier rubyid_auxPer'>auxPer</span> <span class='op'>=</span> <span class='float'>1.0</span>
 	<span class='id identifier rubyid_auxPrice'>auxPrice</span> <span class='op'>=</span> <span class='int'>20</span>
 	<span class='id identifier rubyid_i'>i</span> <span class='op'>=</span> <span class='int'>1</span> <span class='op'>+</span> <span class='lparen'>(</span><span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='rparen'>)</span><span class='op'>*</span><span class='int'>3</span><span class='rparen'>)</span>
@@ -569,13 +569,13 @@
 
 		<span class='id identifier rubyid_foods'>foods</span> 	<span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_newRandFood'>newRandFood</span><span class='lparen'>(</span><span class='id identifier rubyid_pcarbs'>pcarbs</span><span class='comma'>,</span><span class='id identifier rubyid_pprots'>pprots</span><span class='comma'>,</span><span class='id identifier rubyid_plips'>plips</span><span class='rparen'>)</span>
 		<span class='id identifier rubyid_percents'>percents</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_thisauxPer'>thisauxPer</span>			
-		<span class='id identifier rubyid_prices'>prices</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_thisauxprice'>thisauxprice</span>			
+		<span class='id identifier rubyid_prices'>prices</span> <span class='op'>+=</span> <span class='id identifier rubyid_thisauxprice'>thisauxprice</span> <span class='op'>*</span> <span class='id identifier rubyid_thisauxPer'>thisauxPer</span>	
 
 		<span class='id identifier rubyid_i'>i</span> <span class='op'>-=</span> <span class='int'>1</span>
 	<span class='kw'>end</span>
 	<span class='id identifier rubyid_foods'>foods</span> 	<span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_newRandFood'>newRandFood</span><span class='lparen'>(</span><span class='id identifier rubyid_pcarbs'>pcarbs</span><span class='comma'>,</span><span class='id identifier rubyid_pprots'>pprots</span><span class='comma'>,</span><span class='id identifier rubyid_plips'>plips</span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_percents'>percents</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_auxPer'>auxPer</span>
-	<span class='id identifier rubyid_prices'>prices</span> <span class='op'>&lt;&lt;</span> <span class='id identifier rubyid_auxPrice'>auxPrice</span> <span class='op'>*</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='rparen'>)</span>
+	<span class='id identifier rubyid_prices'>prices</span> <span class='op'>+=</span> <span class='id identifier rubyid_auxPrice'>auxPrice</span> <span class='op'>*</span> <span class='id identifier rubyid_rand'>rand</span><span class='lparen'>(</span><span class='rparen'>)</span> <span class='op'>*</span> <span class='id identifier rubyid_auxPer'>auxPer</span>
 
 
 	<span class='id identifier rubyid_p'>p</span> <span class='op'>=</span> <span class='const'><span class='object_link'><a href="Plate.html" title="Plate (class)">Plate</a></span></span><span class='period'>.</span><span class='id identifier rubyid_new'><span class='object_link'><a href="Plate.html#initialize-instance_method" title="Plate#initialize (method)">new</a></span></span><span class='lparen'>(</span>
@@ -596,7 +596,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Dec 11 10:20:43 2019 by
+  Generated on Wed Dec 18 11:55:10 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.20 (ruby-2.7.0).
 </div>

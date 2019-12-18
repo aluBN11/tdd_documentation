@@ -676,13 +676,21 @@ RSpec.describe "Test nutritional index" do
 	end
 
 	it "can increment in relation to max index plate" do
+		
+		oprices = @m.plates.collect{ |plate| plate.price }
+
 		aux = @m.plates.max_by {|plate| plate.nutritional_index() }
 
 		aux = aux.nutritional_index()
 
 		p = @m.plates.collect{ |plate|
-			plate.price += plate.price * plate.nutritional_index()/aux
+			plate.price + plate.price * plate.nutritional_index()/aux
 		}
+
+		@m.plates.each_with_index{ |plate,i| 
+				 expect( plate.price <= p[i] ).to be true 
+		}
+
 	end
 end 
 

@@ -1,4 +1,6 @@
 
+
+#Handles the plates
 class Plate
 
 	include NutritionImpac
@@ -6,7 +8,11 @@ class Plate
 	attr_reader :name
 	attr_accessor :price
 
-	def initialize(name, #pCarbs, pProts, pLipids, 
+# @param name [String] name of the plates
+# @param plates [List] Contains the foods
+# @param percentPlates [List] Contains the percent of each food that makes the plate
+# @param price [Float] price of the plate
+	def initialize(name, 
 			foods, percentsFoods, price)
 		@name=name
 		@price=price

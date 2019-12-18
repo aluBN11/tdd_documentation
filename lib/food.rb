@@ -1,4 +1,6 @@
 
+
+#logic and data for food
 class Food
 
 	include Comparable
@@ -10,6 +12,10 @@ class Food
 	attr_reader :carbs
 	attr_reader :lipids
 	
+# @param name [String] name of the food
+# @param protein [Float] cuantity of protein 
+# @param carbs [Float] cuantity of carbohidrates
+# @param lipids [Float] cuantity of 
 	def initialize(name,protein,carbs,lipids,gas,terrain)
 		@name = name
 		@gas = gas  

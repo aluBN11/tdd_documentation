@@ -1,11 +1,16 @@
 
+#Handles the menu
+
 class Menu
 
 	include NutritionImpac
 
 	attr_reader :name
 
-	def initialize(name, #pCarbs, pProts, pLipids, 
+# @param name [String] name of the menu
+# @param plates [List] with the plates
+# @param percentPlates [List] with the percent of each plate that makes the menu
+	def initialize(name,
 			plates, percentsPlates)
 
 		for plate in plates

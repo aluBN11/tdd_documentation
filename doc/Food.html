@@ -104,7 +104,18 @@
   
 </div>
 
+<h2>Overview</h2><div class="docstring">
+  <div class="discussion">
+    
+<p>logic and data for food</p>
 
+
+  </div>
+</div>
+<div class="tags">
+  
+
+</div>
 
 
 
@@ -547,7 +558,75 @@
   </div>
 </div>
 <div class="tags">
+  <p class="tag_title">Parameters:</p>
+<ul class="param">
   
+    <li>
+      
+        <span class='name'>name</span>
+      
+      
+        <span class='type'>(<tt>String</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>name of the food</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>protein</span>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>cuantity of protein</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>carbs</span>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>cuantity of carbohidrates</p>
+</div>
+      
+    </li>
+  
+    <li>
+      
+        <span class='name'>lipids</span>
+      
+      
+        <span class='type'>(<tt>Float</tt>)</span>
+      
+      
+      
+        &mdash;
+        <div class='inline'>
+<p>cuantity of</p>
+</div>
+      
+    </li>
+  
+</ul>
+
 
 </div><table class="source_code">
   <tr>
@@ -555,18 +634,18 @@
       <pre class="lines">
 
 
-13
-14
-15
-16
-17
-18
 19
 20
-21</pre>
+21
+22
+23
+24
+25
+26
+27</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 13</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 19</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_initialize'>initialize</span><span class='lparen'>(</span><span class='id identifier rubyid_name'>name</span><span class='comma'>,</span><span class='id identifier rubyid_protein'>protein</span><span class='comma'>,</span><span class='id identifier rubyid_carbs'>carbs</span><span class='comma'>,</span><span class='id identifier rubyid_lipids'>lipids</span><span class='comma'>,</span><span class='id identifier rubyid_gas'>gas</span><span class='comma'>,</span><span class='id identifier rubyid_terrain'>terrain</span><span class='rparen'>)</span>
 	<span class='ivar'>@name</span> <span class='op'>=</span> <span class='id identifier rubyid_name'>name</span>
@@ -615,12 +694,12 @@
       <pre class="lines">
 
 
-10
-11
-12</pre>
+12
+13
+14</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 10</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 12</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_carbs'>carbs</span>
   <span class='ivar'>@carbs</span>
@@ -658,12 +737,12 @@
       <pre class="lines">
 
 
-7
-8
-9</pre>
+9
+10
+11</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 7</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 9</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_gas'>gas</span>
   <span class='ivar'>@gas</span>
@@ -701,12 +780,12 @@
       <pre class="lines">
 
 
-11
-12
-13</pre>
+13
+14
+15</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 11</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 13</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_lipids'>lipids</span>
   <span class='ivar'>@lipids</span>
@@ -744,12 +823,12 @@
       <pre class="lines">
 
 
-6
-7
-8</pre>
+8
+9
+10</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 6</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 8</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_name'>name</span>
   <span class='ivar'>@name</span>
@@ -787,12 +866,12 @@
       <pre class="lines">
 
 
-9
-10
-11</pre>
+11
+12
+13</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 9</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 11</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_protein'>protein</span>
   <span class='ivar'>@protein</span>
@@ -830,12 +909,12 @@
       <pre class="lines">
 
 
-8
-9
-10</pre>
+10
+11
+12</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 8</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 10</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_terrain'>terrain</span>
   <span class='ivar'>@terrain</span>
@@ -867,12 +946,12 @@
       <pre class="lines">
 
 
-80
-81
-82</pre>
+86
+87
+88</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 80</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 86</span>
 
 <span class='kw'>def</span> <span class='op'>&lt;=&gt;</span><span class='lparen'>(</span><span class='id identifier rubyid_other'>other</span><span class='rparen'>)</span>
 	<span class='kw'>self</span><span class='period'>.</span><span class='id identifier rubyid_energeticVal'>energeticVal</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span><span class='op'>&lt;=&gt;</span><span class='id identifier rubyid_other'>other</span><span class='period'>.</span><span class='id identifier rubyid_energeticVal'>energeticVal</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
@@ -897,12 +976,12 @@
       <pre class="lines">
 
 
-48
-49
-50</pre>
+54
+55
+56</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 48</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 54</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_energeticVal'>energeticVal</span><span class='lparen'>(</span><span class='id identifier rubyid_portions'>portions</span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_portions'>portions</span><span class='op'>*</span><span class='lparen'>(</span><span class='int'>4</span><span class='op'>*</span><span class='ivar'>@carbs</span> <span class='op'>+</span> <span class='int'>9</span><span class='op'>*</span><span class='ivar'>@lipids</span> <span class='op'>+</span> <span class='int'>4</span><span class='op'>*</span><span class='ivar'>@protein</span><span class='rparen'>)</span>
@@ -927,12 +1006,6 @@
       <pre class="lines">
 
 
-23
-24
-25
-26
-27
-28
 29
 30
 31
@@ -945,10 +1018,16 @@
 38
 39
 40
-41</pre>
+41
+42
+43
+44
+45
+46
+47</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 23</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 29</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_formatedVal'>formatedVal</span><span class='lparen'>(</span><span class='rparen'>)</span>
 
@@ -989,15 +1068,15 @@
       <pre class="lines">
 
 
-53
-54
-55
-56
-57
-58</pre>
+59
+60
+61
+62
+63
+64</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 53</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 59</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_impact_gas'>impact_gas</span><span class='lparen'>(</span> <span class='id identifier rubyid_kcal'>kcal</span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_valPortion'>valPortion</span> <span class='op'>=</span> <span class='id identifier rubyid_energeticVal'>energeticVal</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
@@ -1025,15 +1104,15 @@
       <pre class="lines">
 
 
-60
-61
-62
-63
-64
-65</pre>
+66
+67
+68
+69
+70
+71</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 60</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 66</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_impact_terrain'>impact_terrain</span><span class='lparen'>(</span> <span class='id identifier rubyid_kcal'>kcal</span><span class='rparen'>)</span>
 	<span class='id identifier rubyid_valPortion'>valPortion</span> <span class='op'>=</span> <span class='id identifier rubyid_energeticVal'>energeticVal</span><span class='lparen'>(</span><span class='int'>1</span><span class='rparen'>)</span>
@@ -1061,12 +1140,12 @@
       <pre class="lines">
 
 
-67
-68
-69</pre>
+73
+74
+75</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 67</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 73</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pCarbs'>pCarbs</span><span class='lparen'>(</span><span class='rparen'>)</span>
 	<span class='ivar'>@carbs</span> <span class='op'>/</span> <span class='lparen'>(</span><span class='ivar'>@carbs</span> <span class='op'>+</span> <span class='ivar'>@protein</span> <span class='op'>+</span> <span class='ivar'>@lipids</span><span class='rparen'>)</span>
@@ -1091,12 +1170,12 @@
       <pre class="lines">
 
 
-75
-76
-77</pre>
+81
+82
+83</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 75</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 81</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pLipids'>pLipids</span><span class='lparen'>(</span><span class='rparen'>)</span>
 	<span class='ivar'>@lipids</span> <span class='op'>/</span> <span class='lparen'>(</span><span class='ivar'>@carbs</span> <span class='op'>+</span> <span class='ivar'>@protein</span> <span class='op'>+</span> <span class='ivar'>@lipids</span><span class='rparen'>)</span>
@@ -1121,12 +1200,12 @@
       <pre class="lines">
 
 
-71
-72
-73</pre>
+77
+78
+79</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 71</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 77</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_pProtein'>pProtein</span><span class='lparen'>(</span><span class='rparen'>)</span>
 	<span class='ivar'>@protein</span> <span class='op'>/</span> <span class='lparen'>(</span><span class='ivar'>@carbs</span> <span class='op'>+</span> <span class='ivar'>@protein</span> <span class='op'>+</span> <span class='ivar'>@lipids</span><span class='rparen'>)</span>
@@ -1151,12 +1230,12 @@
       <pre class="lines">
 
 
-43
-44
-45</pre>
+49
+50
+51</pre>
     </td>
     <td>
-      <pre class="code"><span class="info file"># File 'lib/food.rb', line 43</span>
+      <pre class="code"><span class="info file"># File 'lib/food.rb', line 49</span>
 
 <span class='kw'>def</span> <span class='id identifier rubyid_to_s'>to_s</span>
 	<span class='kw'>return</span> <span class='id identifier rubyid_formatedVal'>formatedVal</span>
@@ -1171,7 +1250,7 @@
 </div>
 
       <div id="footer">
-  Generated on Wed Dec 11 10:20:43 2019 by
+  Generated on Wed Dec 18 11:55:10 2019 by
   <a href="http://yardoc.org" title="Yay! A Ruby Documentation Tool" target="_parent">yard</a>
   0.9.20 (ruby-2.7.0).
 </div>
